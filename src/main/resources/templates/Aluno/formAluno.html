@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="/css/AlunoFormStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center" id="logo">Cadastros.com</a>
+    </div>
+</nav>
+<div class="container">
+    <h2>Cadastrar Aluno</h2>
+    <form method="post">
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="nome" placeholder="Nome" id="nome" type="text" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input name="dataNascimento" placeholder="Data de Nascimento" id="data" type="date" class="validate">
+            </div>
+            <div class="input-field col s6">
+                <input name="rg" placeholder="RG" id="rg" type="text" class="validate">
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn btn-large"><i class="material-icons right">CADASTRAR</button>
+    </form>
+
+</div>
+</body>
+</html>

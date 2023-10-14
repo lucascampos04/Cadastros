@@ -1,0 +1,12 @@
+.container{
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+
+a{
+    margin-left: 30vh;
+    font-family: Roboto;
+}
