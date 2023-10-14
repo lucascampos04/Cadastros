@@ -5,8 +5,12 @@ import com.cadastri.cadastro.Repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 public class AlunoController {
@@ -24,8 +28,14 @@ public class AlunoController {
     }
 
     @RequestMapping(value = "/cadastrarAluno", method = RequestMethod.POST)
-    public String formCadastroPost(Aluno aluno, Model model){
+    public String formCadastroPost(@Valid Aluno aluno,BindingResult result ,Model model){
+        if (aluno.getNome().isEmpty() && aluno.getRg().isEmpty() && aluno.getDataNascimento().isEmpty()){
+            System.out.println("Validação falhou");
+            return "redirect:/cadastrarAluno";
+        }
         ar.save(aluno);
+        System.out.println("Aluno cadastrado com sucesso!");
+        model.addAttribute("mensagem", "Aluno cadastrado com sucesso!");
         return "redirect:/cadastrarAluno";
     }
 }
