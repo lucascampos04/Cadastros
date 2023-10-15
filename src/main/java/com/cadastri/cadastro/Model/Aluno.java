@@ -1,7 +1,6 @@
 package com.cadastri.cadastro.Model;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Data;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotBlank;
 
@@ -27,7 +27,11 @@ public class Aluno {
     private String nome;
 
     @NotBlank
+    @CPF
     private String rg;
+
+    @jakarta.validation.constraints.NotBlank
+    private String cpf;
 
     @NotBlank
     private String dataNascimento;

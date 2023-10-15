@@ -13,6 +13,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+<style>
+    #msg_success{
+        width: 50vh;
+    }
+
+    .msg{
+        width: 50vh;
+    }
+</style>
 <nav>
     <div class="nav-wrapper">
         <a href="/" class="brand-logo center" id="logo">Cadastros.com</a>
@@ -20,10 +29,8 @@
 </nav>
 <br>
 
-<div class="container-fluid">
     <div th:replace="msgs/msgValidacao :: msg_error" class="msg"></div>
-    <div th:replace="msgs/msgValidacao :: msg_success" class="msg" id="msg_success"></div>
-</div>
+    <div th:replace="msgs/msgValidacao :: msg_success" id="msg_success"></div>
 <div class="container">
     <h2 id="form-title">Cadastrar Aluno</h2>
     <form method="post" id="aluno-form">
@@ -38,6 +45,9 @@
             </div>
             <div class="input-field col s6">
                 <input name="rg" placeholder="RG" id="rg" type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+                <input name="cpf" placeholder="CPF" id="cpf" type="text" class="validate">
             </div>
         </div>
         <button type="submit" class="btn btn-success btn-large">

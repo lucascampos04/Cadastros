@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <title>Alunos cadastrados</title>
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/BootStrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/BootStrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/ListaDeAlunosStyle.css">
 </head>
 <body>
-    <div class="container">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>RA</th>
-                <th>NOME</th>
-                <th>DATA NASCIMENTO</th>
-                <th>RG</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr th:each="aluno : ${aluno}">
-                    <td><span th:text="${aluno.id}"></span></td>
-                    <td><span th:text="${aluno.nome}"></span></td>
-                    <td><span th:text="${aluno.dataNascimento}"></span></td>
-                    <td><span th:text="${aluno.rg}"></span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="container">
+    <h1 class="text-center font-weight-bold">Alunos Listados</h1>
+    <table class="table table-striped table-hover border border-dark">
+        <thead>
+        <tr>
+            <th>RA</th>
+            <th>NOME</th>
+            <th>DATA NASCIMENTO</th>
+            <th>RG</th>
+            <th>CPF</th>
+            <th class="text-danger">REMOVER</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aluno : ${aluno}">
+            <td><span th:text="${aluno.id}"></span></td>
+            <td><span th:text="${aluno.nome}"></span></td>
+            <td><span th:text="${aluno.dataNascimento}"></span></td>
+            <td><span th:text="${aluno.rg}"></span></td>
+            <td><span th:text="${aluno.cpf}"></span></td>
+            <td>
+                <a class="btn btn-danger" th:href="${(#mvc.url('AC#deletarAluno').arg(0, aluno.id)).build()}">
+                    <span class="bi bi-trash"></span> Remover
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

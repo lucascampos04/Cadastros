@@ -29,7 +29,7 @@ public class AlunoController {
 
     @RequestMapping(value = "/cadastrarAluno", method = RequestMethod.POST)
     public String formCadastroPost(Aluno aluno, BindingResult result , RedirectAttributes attributes, Model model){
-        if (aluno.getNome().isEmpty() || aluno.getRg().isEmpty() || aluno.getDataNascimento().isEmpty()){
+        if (aluno.getNome().isEmpty() || aluno.getRg().isEmpty() || aluno.getDataNascimento().isEmpty() || aluno.getCpf().isEmpty()){
             System.out.println("Validação falhou");
             attributes.addFlashAttribute("error", "Preencha todos os campos");
             model.addAttribute("error", "Preencha todos os campos");
@@ -50,5 +50,11 @@ public class AlunoController {
         Iterable<Aluno> alunos = ar.findAll();
         mv.addObject("aluno", alunos);
         return mv;
+    }
+    @RequestMapping("/deletarAluno")
+    public String deletarAluno(long id){
+        Aluno aluno = ar.findById(id);
+        ar.delete(aluno);
+        return "redirect:/alunosCadastrados";
     }
 }
