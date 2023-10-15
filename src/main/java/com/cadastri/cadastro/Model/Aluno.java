@@ -12,6 +12,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+
 @Entity
 @Data
 public class Aluno {
@@ -23,14 +24,11 @@ public class Aluno {
     private long id;
 
     @NotBlank
-    @NotNull
     private String nome;
 
     @NotBlank
-    @NotNull
     private String rg;
 
     @NotBlank
-    @NotNull
     private String dataNascimento;
 }

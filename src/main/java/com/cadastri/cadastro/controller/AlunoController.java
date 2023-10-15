@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -28,14 +29,16 @@ public class AlunoController {
     }
 
     @RequestMapping(value = "/cadastrarAluno", method = RequestMethod.POST)
-    public String formCadastroPost(@Valid Aluno aluno,BindingResult result ,Model model){
-        if (aluno.getNome().isEmpty() && aluno.getRg().isEmpty() && aluno.getDataNascimento().isEmpty()){
+    public String formCadastroPost(Aluno aluno, BindingResult result , RedirectAttributes attributes, Model model){
+        if (aluno.getNome().isEmpty() || aluno.getRg().isEmpty() || aluno.getDataNascimento().isEmpty()){
             System.out.println("Validação falhou");
+            attributes.addFlashAttribute("error", "Preencha todos os campos");
+            model.addAttribute("error", "Preencha todos os campos");
             return "redirect:/cadastrarAluno";
         }
         ar.save(aluno);
         System.out.println("Aluno cadastrado com sucesso!");
-        model.addAttribute("mensagem", "Aluno cadastrado com sucesso!");
+        attributes.addFlashAttribute("mensagem", "Aluno cadastrado com sucesso!");
         return "redirect:/cadastrarAluno";
     }
 }
