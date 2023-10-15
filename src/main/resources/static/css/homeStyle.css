@@ -1,12 +1,32 @@
+.page-footer{
+    font-weight: bold;
+}
+
 .container{
     margin-top: 30px;
+    height: 60vh;
     justify-content: center;
     align-items: center;
     box-shadow: 1px 1px 1px 1px black;
 }
-
-
-a{
-    margin-left: 30vh;
+h1{
     font-family: Roboto;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    top: 40px;
 }
+
+
+#btn{
+    position: relative;
+    left: 30vh;
+    top: 70px;
+    font-family: Roboto;
+    margin-right: 10px;
+}
+.page-footer{
+
+}
+
+
