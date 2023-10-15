@@ -11,6 +11,21 @@
     <link rel="stylesheet" href="/BootStrap/css/bootstrap.css">
     <link rel="stylesheet" href="/css/AlunoFormStyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        .center-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .container-fluid{
+            position: relative;
+            top: 30vh;
+        }
+
+    </style>
 </head>
 <body>
 <nav>
@@ -21,12 +36,12 @@
 <br>
 
 <div class="container-fluid">
-    <div th:replace="msgs/msgValidacao :: msg_success"></div>
-    <div th:replace="msgs/msgValidacao :: msg_error"></div>
+    <div th:replace="msgs/msgValidacao :: msg_error" class="msg"></div>
+    <div th:replace="msgs/msgValidacao :: msg_success" class="msg" id="msg_success"></div>
 </div>
 <div class="container">
-    <h2>Cadastrar Aluno</h2>
-    <form method="post">
+    <h2 id="form-title">Cadastrar Aluno</h2>
+    <form method="post" id="aluno-form">
         <div class="row">
             <div class="input-field col s12">
                 <input name="nome" placeholder="Nome" id="nome" type="text" class="validate">
@@ -45,6 +60,19 @@
         </button>
     </form>
 
+
 </div>
+
+<script>
+    const success = document.getElementById('msg_success');
+    const form = document.querySelector('form')
+
+    if (success && window.getComputedStyle(success).display === 'block'){
+        form.style.display = 'none';
+    }
+
+
+</script>
+
 </body>
 </html>
