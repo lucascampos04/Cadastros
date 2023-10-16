@@ -1,0 +1,13 @@
+table{
+    text-align: center;
+}
+
+td, th{
+    text-align: center;
+    border: 1px solid black;
+}
+
+h1{
+    font-size: 40px;
+    font-weight: bold;
+}

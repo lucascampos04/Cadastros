@@ -45,7 +45,6 @@ public class AlunoController {
     @RequestMapping("/alunosCadastrados")
     public ModelAndView listaAlunos(){
         ModelAndView mv = new ModelAndView("Aluno/ListaDeAlunos");
-
         Iterable<Aluno> alunos = ar.findAll();
         mv.addObject("aluno", alunos);
         return mv;

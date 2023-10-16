@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DiretorRepository extends CrudRepository<Diretor, String> {
     Diretor findById(Long id);
-    boolean existsByRgOrCpf(String rg, String cpd);
+    boolean existsByRgOrCpfOrEmail(String rg, String cpf, String email);
 
 }
