@@ -16,7 +16,6 @@
     .container{
         height: 77vh;
     }
-
 </style>
 <nav>
     <div class="nav-wrapper">
@@ -38,7 +37,12 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input name="genero" placeholder="Gênero" id="genero" type="text" class="validate">
+                <select name="genero" id="genero" class="validate">
+                    <option value="" disabled selected>Selecione o gênero</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+                <label for="genero">Gênero</label>
             </div>
             <div class="input-field col s6">
                 <input name="rg" placeholder="RG" id="rg" type="text" class="validate">
@@ -63,9 +67,16 @@
                 CADASTRAR
             </button>
         </div>
-
     </form>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="materialize/js/materialize.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('select').formSelect(); // Inicializa os campos de seleção
+    });
+</script>
 </body>
 </html>
