@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Diretor</title>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/BootStrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/BootStrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/AlunoFormStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<style>
+    .container{
+        height: 77vh;
+    }
+
+</style>
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center" id="logo">Cadastros.com</a>
+    </div>
+</nav>
+<br>
+
+<div class="container">
+    <h2 id="form-title">Cadastrar Diretor</h2>
+    <form method="post" id="diretor-form">
+        <div class="row">
+            <div class="input-field col s6">
+                <input name="nomeCompleto" placeholder="Nome Completo" id="nome" type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+                <input name="dataNascimento" placeholder="Data de Nascimento" id="data" type="date" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input name="genero" placeholder="Gênero" id="genero" type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+                <input name="rg" placeholder="RG" id="rg" type="text" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input name="cpf" placeholder="CPF" id="cpf" type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+                <input name="endereco" placeholder="Endereço" id="endereco" type="text" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input name="email" placeholder="E-mail" id="email" type="email" class="validate">
+            </div>
+            <div class="input-field col s6">
+                <input name="formacaoAcademica" placeholder="Formação Acadêmica" id="formacaoAcademica" type="text" class="validate">
+            </div>
+            <button type="submit" class="btn btn-success btn-large">
+                CADASTRAR
+            </button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
