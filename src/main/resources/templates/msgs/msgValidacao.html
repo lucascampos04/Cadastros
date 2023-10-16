@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/BootStrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/BootStrap/css/bootstrap.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<style>
+    .alert-danger {
+        background-color: #ff6b6b;
+        border: 1px solid #d9534f;
+        color: #d9534f;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+    }
+
+    .alert-success {
+        background-color: #5cb85c;
+        border: 1px solid #4cae4c;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+    }
+</style>
+<div class="container-fluid">
+    <div th:if="${error}" class="alert alert-danger" th:fragment="msg_error" id="msg">
+        <p th:text="${error}"></p>
+    </div>
+
+    <div th:if="${mensagem}" class="card alert alert-success" th:fragment="msg_success" id="msg">
+        <p th:text="${mensagem}"></p>
+        <div th:if="${aluno != null}">
+            <p>RA : <span th:text="${aluno.id}"></span></p>
+            <p>Nome do Aluno: <span th:text="${aluno.nome}"></span></p>
+            <p>RG: <span th:text="${aluno.rg}"></span></p>
+            <p>CPF: <span th:text="${aluno.cpf}"></span></p>
+            <p>Data de Nascimento: <span th:text="${aluno.dataNascimento}"></span></p>
+            <div class="card-buttons">
+                <a class="btn btn-success" href="/alunosCadastrados">
+                    <span class="font-weight-bold">Ver Alunos Cadastrados</span>
+                </a>
+                <a class="btn btn-success" href="/cadastrarAluno">
+                    <span class="font-weight-bold">Adicionar outro Aluno</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
