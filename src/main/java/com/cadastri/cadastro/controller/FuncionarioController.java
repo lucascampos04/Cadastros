@@ -31,6 +31,7 @@ public class FuncionarioController {
     @RequestMapping(value = "/cadastrarDiretor", method = RequestMethod.POST)
     public String diretorFormPost(@Valid Diretor diretor, BindingResult result, RedirectAttributes attributes, Model model){
 
+        // Verifica se algum campo obrigatório está vazio
         if (diretor.getNomeCompleto().isEmpty() ||
                 diretor.getDataNascimento().isEmpty() ||
                 diretor.getGenero().isEmpty() ||
@@ -45,6 +46,7 @@ public class FuncionarioController {
             return "redirect:/cadastrarDiretor";
         }
 
+        // Verifica se já existe um diretor com o mesmo RG, CPF ou Email
         if (dr.existsByRgOrCpfOrEmail(diretor.getRg(), diretor.getCpf(), diretor.getEmail())){
             attributes.addFlashAttribute("error_campus_existente", "Já existe um diretor com o mesmo RG, CPF ou Email.");
             System.out.println("CPF e RG existentes");
@@ -55,15 +57,18 @@ public class FuncionarioController {
         System.out.println("FOI");
         return "redirect:/cadastrarDiretor";
     }
+    // Listar todos os diretores
     @RequestMapping("/diretores")
-    public ModelAndView listDiretores(Long id){
+    public ModelAndView listDiretores(Long id) {
         ModelAndView mv = new ModelAndView("Funcionarios/ListaDeFuncionarios/listDiretores");
         Iterable<Diretor> diretor = dr.findAll();
         mv.addObject("diretor", diretor);
         return mv;
     }
+
+    // Deletar um diretor
     @RequestMapping("/deletarDiretor")
-    public String deletarDiretor(Long id){
+    public String deletarDiretor(Long id) {
         Diretor diretor = dr.findById(id);
         dr.delete(diretor);
         return "redirect:/diretores";

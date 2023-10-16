@@ -28,6 +28,7 @@ public class AlunoController {
 
     @RequestMapping(value = "/cadastrarAluno", method = RequestMethod.POST)
     public String formCadastroPost(Aluno aluno, BindingResult result , RedirectAttributes attributes, Model model){
+        // Verifica se algum campo obrigatório está vazio
         if (aluno.getNome().isEmpty() || aluno.getRg().isEmpty() || aluno.getDataNascimento().isEmpty() || aluno.getCpf().isEmpty()){
             System.out.println("Validação falhou");
             attributes.addFlashAttribute("error", "Preencha todos os campos");
@@ -35,6 +36,7 @@ public class AlunoController {
             return "redirect:/cadastrarAluno";
         }
 
+        // Verifica se já existe um aluno com o mesmo CPF ou RG
         if (ar.existsByCpfOrRg(aluno.getCpf(), aluno.getRg())){
             System.out.println("CPF e RG existentes");
             attributes.addFlashAttribute("error_campus_existente", "Já existe um aluno com o mesmo RG ou CPF.");
@@ -49,6 +51,7 @@ public class AlunoController {
         return "redirect:/cadastrarAluno";
     }
 
+    // Listar todos os alunos
     @RequestMapping("/alunosCadastrados")
     public ModelAndView listaAlunos(){
         ModelAndView mv = new ModelAndView("Aluno/ListaDeAlunos");
@@ -56,6 +59,8 @@ public class AlunoController {
         mv.addObject("aluno", alunos);
         return mv;
     }
+
+    // Deletar um aluno
     @RequestMapping("/deletarAluno")
     public String deletarAluno(long id){
         Aluno aluno = ar.findById(id);
