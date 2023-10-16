@@ -28,10 +28,9 @@
     </div>
 </nav>
 <br>
-
-
-    <div th:replace="msgs/msgValidacao :: msg_error" class="msg"></div>
-    <div th:replace="msgs/msgValidacao :: msg_success" id="msg_success"></div>
+    <div th:replace="msgs/Aluno/msgValidacao :: msg_error" class="msg"></div>
+    <div th:replace="msgs/Aluno/msgValidacao :: msg_success" id="msg_success"></div>
+    <div th:replace="msgs/Aluno/msgValidacao :: error_campos_existente" id="msg_success"></div>
 <div class="container">
     <h2 id="form-title">Cadastrar Aluno</h2>
     <form method="post" id="aluno-form">

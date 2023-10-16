@@ -36,6 +36,10 @@
         <p th:text="${error}"></p>
     </div>
 
+    <div th:if="${error_campus_existente}" class="alert alert-danger" th:fragment="error_campos_existente">
+        <p th:text="${error_campus_existente}"></p>
+    </div>
+
     <div th:if="${mensagem}" class="card alert alert-success" th:fragment="msg_success" id="msg">
         <p th:text="${mensagem}"></p>
         <div th:if="${aluno != null}">

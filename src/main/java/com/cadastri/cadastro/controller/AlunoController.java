@@ -34,6 +34,13 @@ public class AlunoController {
             model.addAttribute("error", "Preencha todos os campos");
             return "redirect:/cadastrarAluno";
         }
+
+        if (ar.existsByCpfOrRg(aluno.getCpf(), aluno.getRg())){
+            System.out.println("CPF e RG existentes");
+            attributes.addFlashAttribute("error_campus_existente", "Já existe um aluno com o mesmo RG ou CPF.");
+            return "redirect:/cadastrarAluno";
+        }
+
         ar.save(aluno);
         System.out.println("Aluno cadastrado com sucesso!");
         attributes.addFlashAttribute("aluno", aluno);
